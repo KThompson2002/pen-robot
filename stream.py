@@ -51,7 +51,7 @@ class Stream():
         # Align the depth frame to color frame
         aligned_frames = self.align.process(frames)
 
-        clipping_distance = 1 / self.depth_scale
+        clipping_distance = 2 / self.depth_scale
 
         # Get aligned frames
         self.aligned_depth_frame = aligned_frames.get_depth_frame() # aligned_depth_frame is a 640x480 depth image
@@ -83,7 +83,7 @@ class Stream():
         ret, thresh = cv2.threshold(mask, 127, 255, 0)
         contours, hierarchy = cv2.findContours(thresh, 1, 2)
         if len(contours) < 1:
-            return -1, -1, -1, np.array([0, 0])
+            return (-1, -1, -1), np.array([0, 0])
         elif len(contours) >= 1:
             # ind = 0 
             # max_ = 0
@@ -101,7 +101,7 @@ class Stream():
             cnt = max(contours, key=cv2.contourArea)
             M = cv2.moments(cnt)
             if M['m00'] == 0:
-                return -1, -1, -1, np.array([0, 0])
+                return (-1, -1, -1), np.array([0, 0])
             cx = int(M['m10']/M['m00'])
             cy = int(M['m01']/M['m00'])
             prof = self.profile.get_stream(rs.stream.color)
