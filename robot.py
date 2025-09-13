@@ -11,4 +11,5 @@ class Robot():
         return self.robot
     
     def __exit__(self, exc_type, exc_val, exc_tb):
+        self.robot.arm.go_to_sleep_pose
         robot_shutdown()

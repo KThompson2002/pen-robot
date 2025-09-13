@@ -45,5 +45,15 @@ while mode != 'q':
         print(robot.arm.get_ee_pose())
     elif mode == "pose3":
         robot.arm.set_ee_pose_components(0.1, -0.15, 0.21)
+    elif mode == "pose4":
+        robot.arm.set_ee_pose_components(0.2, 0, 0.12)
+    elif mode == "pose5":
+        robot.arm.set_ee_pose_components(0.25, 0, 0.18)
+    elif mode == "pose6":
+        robot.arm.set_ee_pose_components(0.2, 0.1, 0.15)
+    elif mode == "pose7":
+        robot.arm.set_ee_pose_components(0.18, 0.15, 0.12)
+    elif mode == "pose8":
+        robot.arm.set_ee_pose_components(0.23, 0.18, 0.11)
 
 robot_shutdown()
